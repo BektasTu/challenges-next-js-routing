@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Link from "next/Link";
 import { useRouter } from "next/router";
+import StyledNavLink from "./StyledNavLink";
 
 export default function Header() {
   const { pathname } = useRouter();
@@ -8,16 +9,16 @@ export default function Header() {
     <StyledHeader>
       <StyledNav>
         <Link href="/" passHref>
-          <Anchor active={pathname === "/"}>Home</Anchor>
+          <StyledNavLink active={pathname === "/"}>Home</StyledNavLink>
         </Link>
         <Link href="/product" passHref>
-          <Anchor active={pathname === "/product"}>Product</Anchor>
+          <StyledNavLink active={pathname === "/product"}>Product</StyledNavLink>
         </Link>
         <Link href="/team" passHref>
-          <Anchor active={pathname === "/team"}>Team</Anchor>
+          <StyledNavLink active={pathname === "/team"}>Team</StyledNavLink>
         </Link>
         <Link href="/account" passHref>
-          <Anchor active={pathname === "/account"}>Account</Anchor>
+          <StyledNavLink active={pathname === "/account"}>Account</StyledNavLink>
         </Link>
       </StyledNav>
     </StyledHeader>
@@ -33,17 +34,3 @@ const StyledNav = styled.nav`
   display: flex;
   justify-content: space-between;
 `;
-
-const Anchor = styled.a`
-  font-size: 1rem;
-  padding: 0;
-  background: none;
-  border: none;
-  color: ${({ active }) => (active ? "lime" : "beige")};
-  cursor: pointer;
-  text-decoration: none;
-
-  &:hover {
-    color: black;
-  }
-  `
